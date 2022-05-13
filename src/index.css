@@ -6,9 +6,31 @@ body {
   text-align: center;
 }
 
-.map-container {
-  background-color: aqua;
-  align-items: center;
-  height: 50rem;
-  width: 70rem;
+h1 {
+  font-size: 30px;
 }
+
+.map-container {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* .card {
+  background-color: rgb(113, 214, 248);
+  margin: 10px 10rem;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 2.5px 1.4px 3.3px rgba(0, 0, 0, 0.058),
+    5.6px 3.2px 7.5px rgba(0, 0, 0, 0.084),
+    9.8px 5.6px 13.1px rgba(0, 0, 0, 0.103),
+    15.5px 8.9px 20.8px rgba(0, 0, 0, 0.12),
+    24px 13.7px 32.1px rgba(0, 0, 0, 0.137),
+    37.4px 21.4px 50px rgba(0, 0, 0, 0.156),
+    62.1px 35.5px 83.1px rgba(0, 0, 0, 0.182),
+    124px 71px 166px rgba(0, 0, 0, 0.24);
+} */
