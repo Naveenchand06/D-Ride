@@ -9,11 +9,11 @@ function MapPage() {
   return (
     <div className={style.main}>
       <Map
-        mapboxAccessToken={process.env.REACT_APP_MAP_KEY}
+        mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         initialViewState={{
-          longitude: 48.121,
-          latitude: 9.141,
-          zoom: 6,
+          longitude: 78.119774,
+          latitude: 9.925201,
+          zoom: 12,
         }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
       />
