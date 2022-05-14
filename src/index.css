@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  text-align: center;
-}
-
-h1 {
-  font-size: 30px;
-}
-
 .map-container {
   display: flex;
   justify-content: center;
