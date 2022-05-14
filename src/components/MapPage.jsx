@@ -1,13 +1,13 @@
 import React from "react";
 import Map from "react-map-gl";
 
-const style = {
-  main: `w-screen h-screen m-auto`,
-};
+// const style = {
+//   main: `w-screen h-screen m-auto`,
+// };
 
 function MapPage() {
   return (
-    <div className={style.main}>
+    <div className="w-screen mx-auto h-screen px-1">
       <Map
         mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         initialViewState={{
