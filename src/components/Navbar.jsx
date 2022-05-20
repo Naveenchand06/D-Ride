@@ -2,16 +2,17 @@ import { ethers } from "ethers";
 import React, { useState, useEffect } from "react";
 import { FaRedRiver, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Navbar() {
   useEffect(() => {
-    requestAccounts();
+    // requestAccounts();
   }, []);
 
   const [walletAddress, setWalletAddress] = useState("");
 
   const requestAccounts = async () => {
-    console.log("Requesting Accounts");
+    console.log("Requesting Accounts....");
     // Check if meta mask exists
     if (window.ethereum) {
       console.log("Detected");
@@ -27,6 +28,7 @@ function Navbar() {
         console.log(e);
       }
     } else {
+      toast.error("Please install metamask to use this application");
       console.log("Metamask does not exist");
     }
   };

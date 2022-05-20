@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Navbar from "./components/Navbar";
 import Help from "./pages/Help";
 import Ride from "./pages/Ride";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           {/* <Route path="/services" element={<Services />} /> */}
           {/* <Route path="/contact" element={<Contact />} /> */}
         </Routes>
+        <ToastContainer />
       </Router>
     </>
   );
