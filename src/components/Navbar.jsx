@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 function Navbar() {
   useEffect(() => {
-    // requestAccounts();
+    requestAccounts();
   }, []);
 
   const [walletAddress, setWalletAddress] = useState("");
@@ -21,7 +21,6 @@ function Navbar() {
           method: "eth_requestAccounts",
         });
         console.log(accounts);
-        console.log(accounts[0].length);
         setWalletAddress(accounts[0]);
       } catch (e) {
         console.log("Error Connecting");
@@ -42,7 +41,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="conatiner flex flex-row items-center justify-between p-2 px-8 bg-gray-700 text-white">
+    <nav className="conatiner mx-auto flex flex-row items-center justify-between p-2 px-8 bg-gray-700 text-white">
       {/* Logo */}
       <div className="prose text-xl font-semibold">
         <FaRedRiver className="inline-block mr-3" />
@@ -70,7 +69,7 @@ function Navbar() {
         {/* Ride button */}
         <Link
           to="/ride"
-          className="mr-3 rounded-full bg-white p-2 px-6 text-black hover:text-gray-200 hover:bg-gray-400"
+          className="mr-3 rounded-full bg-white p-1 px-3 text-black hover:text-gray-200 hover:bg-gray-400"
         >
           Ride now
         </Link>
@@ -86,7 +85,7 @@ function Navbar() {
           </div>
         ) : (
           <h1>
-            {walletAddress.substring(0, 6)}...{walletAddress.substring(35, 42)}
+            {walletAddress.substring(0, 6)}...{walletAddress.substring(38, 42)}
           </h1>
         )}
       </div>
