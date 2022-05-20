@@ -1,8 +1,44 @@
-import React from "react";
+import { ethers } from "ethers";
+import React, { useState, useEffect } from "react";
 import { FaRedRiver, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 function Navbar() {
+  useEffect(() => {
+    requestAccounts();
+  }, []);
+
+  const [walletAddress, setWalletAddress] = useState("");
+
+  const requestAccounts = async () => {
+    console.log("Requesting Accounts");
+    // Check if meta mask exists
+    if (window.ethereum) {
+      console.log("Detected");
+      try {
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        console.log(accounts);
+        console.log(accounts[0].length);
+        setWalletAddress(accounts[0]);
+      } catch (e) {
+        console.log("Error Connecting");
+        console.log(e);
+      }
+    } else {
+      console.log("Metamask does not exist");
+    }
+  };
+
+  const connectWallet = async () => {
+    if (typeof window.ethereum != undefined) {
+      await requestAccounts();
+      // Can use this provider to interact with ethereum
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+    }
+  };
+
   return (
     <nav className="conatiner flex flex-row items-center justify-between p-2 px-8 bg-gray-700 text-white">
       {/* Logo */}
@@ -28,7 +64,7 @@ function Navbar() {
       </div>
 
       {/* Trailing Buttons */}
-      <div className="flex items-center">
+      <div className="flex items-center space-x-10">
         {/* Ride button */}
         <Link
           to="/ride"
@@ -38,13 +74,19 @@ function Navbar() {
         </Link>
 
         {/* Login Button */}
-        <Link
-          to="/"
-          className="border-2 shadow-white flex items-center px-4 rounded-3xl py-1 hover:bg-slate-300 hover:text-black"
-        >
-          <FaUser className="mr-2" />
-          <p>Login</p>
-        </Link>
+        {walletAddress === "" ? (
+          <div
+            onClick={requestAccounts}
+            className="border-2 shadow-white flex items-center px-4 rounded-3xl py-1 hover:bg-slate-300 hover:text-black"
+          >
+            <FaUser className="mr-2" />
+            <p>Login</p>
+          </div>
+        ) : (
+          <h1>
+            {walletAddress.substring(0, 6)}...{walletAddress.substring(35, 42)}
+          </h1>
+        )}
       </div>
     </nav>
   );
