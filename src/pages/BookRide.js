@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import RideContext from "../context/rideContext";
+import { useNavigate } from "react-router-dom";
 
-function Ride() {
+function BookRide() {
+  const { bookRide } = useContext(RideContext);
+  const navigate = useNavigate();
+
   const [fromAddress, setFromAddress] = useState({
     from_doorno: "",
     from_street: "",
@@ -26,8 +31,10 @@ function Ride() {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    bookRide({ fromAddress, toAddress });
     console.log(fromAddress);
     console.log(toAddress);
+    navigate("/all-rides");
   };
 
   return (
@@ -138,15 +145,17 @@ function Ride() {
           </div>
           {/* To Fields container Ends here */}
         </div>
-        <button
-          type="submit"
-          className="bg-black px-5 py-2 text-white rounded-xl my-4 place-content-center"
-        >
-          Book Ride
-        </button>
+        <center>
+          <button
+            type="submit"
+            className="bg-black px-5 py-2 text-white rounded-xl my-4 place-content-center"
+          >
+            Book Ride
+          </button>
+        </center>
       </form>
     </section>
   );
 }
 
-export default Ride;
+export default BookRide;

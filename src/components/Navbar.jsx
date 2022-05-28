@@ -12,15 +12,15 @@ function Navbar() {
   const [walletAddress, setWalletAddress] = useState("");
 
   const requestAccounts = async () => {
-    console.log("Requesting Accounts....");
+    // console.log("Requesting Accounts....");
     // Check if meta mask exists
     if (window.ethereum) {
-      console.log("Detected");
+      // console.log("Detected");
       try {
         const accounts = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
-        console.log(accounts);
+        // console.log(accounts);
         setWalletAddress(accounts[0]);
       } catch (e) {
         console.log("Error Connecting");
@@ -53,14 +53,20 @@ function Navbar() {
         <Link to="/" className="hover:text-gray-400">
           Home
         </Link>
-        <Link to="/ride" className="hover:text-gray-400">
+        {/* <Link to="/ride" className="hover:text-gray-400">
           Ride
-        </Link>
+        </Link> */}
         <Link to="/about" className="hover:text-gray-400">
           About
         </Link>
-        <Link to="/help" className="hover:text-gray-400">
+        {/* <Link to="/help" className="hover:text-gray-400">
           Help
+        </Link> */}
+        <Link to="/all-rides" className="hover:text-gray-400">
+          All Rides
+        </Link>
+        <Link to="/active-rides" className="hover:text-gray-400">
+          Active Rides
         </Link>
       </div>
 
@@ -68,10 +74,10 @@ function Navbar() {
       <div className="flex items-center space-x-10">
         {/* Ride button */}
         <Link
-          to="/ride"
-          className="mr-3 rounded-full bg-white p-1 px-3 text-black hover:text-gray-200 hover:bg-gray-400"
+          to="/book-ride"
+          className="mr-3 rounded-full bg-white p-1 px-3 text-sm text-black hover:text-gray-200 hover:bg-gray-400"
         >
-          Ride now
+          Book Ride
         </Link>
 
         {/* Login Button */}
